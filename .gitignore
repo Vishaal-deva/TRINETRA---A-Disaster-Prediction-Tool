@@ -1,0 +1,12 @@
+﻿*service_account*.json
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.env
+*.lnk
+.claude.json
+*.code-workspace
+node_modules/
+dist/
+.env
