@@ -3,20 +3,22 @@ from fastapi.middleware.cors import CORSMiddleware
 import ee
 import numpy as np
 import os
+import json
 
-SERVICE_ACCOUNT_FILE = "gee_service_account.json"
-
-credentials = ee.ServiceAccountCredentials(
-    email=None,
-    key_file=SERVICE_ACCOUNT_FILE
-)
-ee.Initialize(credentials)
+key_json = os.environ["GEE_KEY_JSON"]
+sa_email = json.loads(key_json)["client_email"]
+credentials = ee.ServiceAccountCredentials(sa_email, key_data=key_json)
+ee.Initialize(credentials, project="neon-flare-473204-u8")
 
 app = FastAPI(title="TRINETRA Backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://trinetra-frontend.onrender.com",
+        "http://localhost:5173",
+        "http://localhost:5174",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
