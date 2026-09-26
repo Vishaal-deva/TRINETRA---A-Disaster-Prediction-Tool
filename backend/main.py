@@ -5,9 +5,20 @@ import numpy as np
 import os
 import json
 
-key_json = os.environ["GEE_KEY_JSON"]
-sa_email = json.loads(key_json)["client_email"]
-credentials = ee.ServiceAccountCredentials(sa_email, key_data=key_json)
+RENDER_SECRET_PATH = "/etc/secrets/gee_service_account.json"
+LOCAL_KEY_PATH = "gee_service_account.json"
+
+if os.path.exists(RENDER_SECRET_PATH):
+    key_path = RENDER_SECRET_PATH
+elif os.path.exists(LOCAL_KEY_PATH):
+    key_path = LOCAL_KEY_PATH
+else:
+    raise RuntimeError("No service account key found (checked Render secret path and local file).")
+
+with open(key_path) as f:
+    sa_email = json.load(f)["client_email"]
+
+credentials = ee.ServiceAccountCredentials(sa_email, key_path)
 ee.Initialize(credentials, project="neon-flare-473204-u8")
 
 app = FastAPI(title="TRINETRA Backend")
