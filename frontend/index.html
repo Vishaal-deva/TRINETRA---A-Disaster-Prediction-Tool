@@ -4,10 +4,91 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <title>TRINETRA</title>
+    <style>
+      html, body { margin: 0; padding: 0; font-family: sans-serif; }
+      #header {
+        position: fixed; top: 0; left: 0; right: 0; height: 56px;
+        background: #0d1b2a; display: flex; align-items: center; justify-content: space-between;
+        padding: 0 16px; z-index: 2000; transition: background 0.3s;
+      }
+      #header .brand { display: flex; align-items: center; gap: 8px; }
+      #header .brand span { color: #fff; font-weight: 700; font-size: 20px; letter-spacing: 1px; }
+      #theme-toggle { background: none; border: none; cursor: pointer; font-size: 22px; color: #fff; }
+
+      #sidebar {
+        position: fixed; top: 56px; left: 0; bottom: 0; width: 260px;
+        background: #0d1b2a; color: #fff; z-index: 1500;
+        padding: 20px 16px; box-sizing: border-box;
+        display: flex; flex-direction: column; gap: 16px;
+        border-right: 1px solid #1c2e42; transition: background 0.3s, color 0.3s;
+      }
+      #sidebar label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #9fb3c8; margin-bottom: 6px; display: block; }
+      #sidebar select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #2c3e50; background: #16263b; color: #fff; font-size: 14px; }
+      .panel-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #9fb3c8; margin-top: 8px; }
+      #spacer { flex-grow: 1; }
+      #breach-btn {
+        padding: 10px; width: 100%; background: #c0392b; color: #fff;
+        border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+      }
+      #breach-btn:disabled { background: #555; cursor: not-allowed; }
+      #status-text { font-size: 12px; color: #9fb3c8; line-height: 1.4; }
+      #river-info { font-size: 12px; color: #9fb3c8; line-height: 1.5; border-top: 1px solid #1c2e42; padding-top: 12px; }
+
+      #app { position: fixed; top: 56px; left: 260px; right: 0; bottom: 0; }
+
+      body.light-theme #header { background: #f5f5f5; }
+      body.light-theme #header .brand span { color: #0d1b2a; }
+      body.light-theme #theme-toggle { color: #0d1b2a; }
+      body.light-theme #sidebar { background: #f5f5f5; color: #0d1b2a; border-right-color: #ddd; }
+      body.light-theme #sidebar label, body.light-theme .panel-title, body.light-theme #status-text, body.light-theme #river-info { color: #5a6b7a; }
+      body.light-theme #sidebar select { background: #fff; color: #0d1b2a; border-color: #ccc; }
+    </style>
   </head>
   <body>
-    <div id="app" style="width:100vw;height:100vh;margin:0"></div>
+    <div id="header">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 100 100">
+          <polygon points="50,10 90,85 10,85" fill="none" stroke="#4fd1c5" stroke-width="6"/>
+          <circle cx="50" cy="58" r="9" fill="#4fd1c5"/>
+        </svg>
+        <span>TRINETRA</span>
+      </div>
+      <button id="theme-toggle" title="Toggle theme">DARK</button>
+    </div>
+
+    <div id="sidebar">
+      <div>
+        <label for="river-select">Select River</label>
+        <select id="river-select">
+          <option value="cauvery">Cauvery</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="dam-select">Select Dam</label>
+        <select id="dam-select">
+          <option value="harangi">Harangi Dam (Kodagu, KA)</option>
+          <option value="hemavathi">Hemavathi Dam (Hassan, KA)</option>
+          <option value="krs">KRS Dam (Mandya, KA)</option>
+          <option value="kabini">Kabini Dam (Mysore, KA)</option>
+          <option value="bhavanisagar">Bhavanisagar Dam (Erode, TN)</option>
+          <option value="mettur">Mettur Dam (Salem, TN)</option>
+          <option value="kallanai">Kallanai / Grand Anicut (Trichy, TN)</option>
+        </select>
+      </div>
+
+      <div id="river-info"></div>
+
+      <div id="spacer"></div>
+
+      <div class="panel-title">Scenario Control</div>
+      <button id="breach-btn">Simulate Dam Break</button>
+      <div id="status-text">Status: Loading...</div>
+    </div>
+
+    <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-</body>
+  </body>
 </html>
+
