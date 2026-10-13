@@ -1,4 +1,4 @@
-# TRINETRA - Dam-Break Disaster Prediction Tool
+# TRINETRA ~ Disaster Prediction Tool
 
 Team Kshetra Labs | SIH 2026, PS 26161 (NTRO, Software, Disaster Management)
 
