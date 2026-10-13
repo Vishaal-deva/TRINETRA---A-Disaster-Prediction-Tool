@@ -55,7 +55,3 @@ Open the local URL that Vite prints.
 
 - The exact dam site coordinates are not yet anchored. The prototype currently uses the DEM-derived max flow-accumulation point (30.40458 N, 79.73403 E), which is upstream of the real dam.
 - Only the Rishiganga is functional. Other rivers are not implemented.
-
-## Team
-
-Kshetra Labs
