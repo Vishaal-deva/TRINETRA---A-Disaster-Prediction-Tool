@@ -1,8 +1,8 @@
 # TRINETRA ~ Disaster Prediction Tool
 
-Team Kshetra Labs | SIH 2026, PS 26161 (NTRO, Software, Disaster Management)
-
 Live demo: https://trinetra-lovat.vercel.app
+
+Current Status : web link available , application not fully built
 
 ## What it does
 
