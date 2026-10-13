@@ -2,7 +2,7 @@
 
 Live demo: https://trinetra-lovat.vercel.app
 
-Current Status : web link available , application not fully built
+###Current Status : web link available , application not fully built
 
 ## What it does
 
@@ -10,7 +10,7 @@ TRINETRA predicts dam-break and flash-flood events instead of only simulating th
 
 The working prototype is scoped to one river, the Rishiganga, using a real ~8x9 km terrain tile.
 
-## Current status (TRL 2 -> 3)
+
 
 | Component | Status |
 |---|---|
