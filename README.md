@@ -2,7 +2,7 @@
 
 Live demo: https://trinetra-lovat.vercel.app
 
-###Current Status : web link available , application not fully built
+### Current Status : web link available , application not fully built
 
 ## What it does
 
